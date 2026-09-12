@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #171b1d;
+  --steel: #687773;
+  --steel-light: #a1ada9;
+  --amber: #d93636;
+  --amber-dark: #ad2525;
+  --canvas: #f6f6f6;
+  --canvas-raised: #ffffff;
+  --line: #e5e5e5;
+  --in-stock: #b52b2b;
+  --in-stock-bg: #fbe8e8;
+  --canvas-tab: #eeeeee;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-steel: var(--steel);
+  --color-steel-light: var(--steel-light);
+  --color-amber: var(--amber);
+  --color-amber-dark: var(--amber-dark);
+  --color-teal: var(--amber);
+  --color-canvas: var(--canvas);
+  --color-canvas-raised: var(--canvas-raised);
+  --color-line: var(--line);
+  --color-in-stock: var(--in-stock);
+  --color-in-stock-bg: var(--in-stock-bg);
+  --color-out-stock: var(--out-stock);
+  --color-out-stock-bg: var(--out-stock-bg);
+  --font-display: var(--font-archivo);
+  --font-body: var(--font-inter);
+  --font-sigmar: "Sigmar One";
+  --color-canvas-tab: var(--canvas-tab);
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--steel-light);
+  border-radius: 4px;
+}
