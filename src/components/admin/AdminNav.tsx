@@ -21,7 +21,7 @@ export function AdminNav() {
   return (
     <header className="sticky top-0 z-20 bg-ink text-canvas-raised">
       <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
-        <span className="font-display text-base font-extrabold">Shop Admin</span>
+        <span className="font-display text-base font-extrabold">OSROB MOTORS</span>
         <button
           onClick={handleLogout}
           className="text-xs font-medium text-steel-light underline underline-offset-2"
