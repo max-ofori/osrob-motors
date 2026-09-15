@@ -25,7 +25,7 @@ export function SiteHeader() {
         </button>
         <Link href="/" className="flex items-center gap-2" aria-label={`${SHOP_NAME} home`}>
           <Image
-            src="/osrob-motors.jpg"
+            src="/icon.png"
             alt="Osrob Motors logo"
             width={40}
             height={40}

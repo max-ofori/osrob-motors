@@ -8,7 +8,7 @@ import "@fontsource/sigmar-one/400.css";
 import "./globals.css";
 import { LocalBusinessJsonLd } from "@/components/LocalBusinessJsonLd";
 
-const SHOP_NAME = process.env.NEXT_PUBLIC_SHOP_NAME ?? "Auto Parts Shop";
+const SHOP_NAME = process.env.NEXT_PUBLIC_SHOP_NAME ?? "Osrob Motors";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {

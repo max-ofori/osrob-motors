@@ -8,6 +8,7 @@ import { FindUs } from "@/components/FindUs";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { CustomerBanner } from "@/components/CustomerBanner";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { ShopMap } from "@/components/ShopMap";
 import type { Prisma } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
@@ -119,6 +120,7 @@ export default async function HomePage({
         </section>
 
         <FindUs />
+        <ShopMap />
       </main>
 
       <footer className="border-t border-line px-4 py-6 text-center text-xs text-steel">
