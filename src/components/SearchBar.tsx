@@ -4,14 +4,10 @@ import { useSearchParams } from "next/navigation";
 
 export function SearchBar({ placeholder = "Search for a part, e.g. Corolla brake pad" }: { placeholder?: string }) {
   const searchParams = useSearchParams();
-  const activeCategory = searchParams.get("category");
   const currentQuery = searchParams.get("q") ?? "";
 
   return (
     <form action="/" method="get" className="flex gap-2">
-      {activeCategory && (
-        <input type="hidden" name="category" value={activeCategory} />
-      )}
       <div className="relative flex-1">
         <svg
           className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-steel-light"

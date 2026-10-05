@@ -1,6 +1,6 @@
-# Auto Parts Shop
+# Osrob Motors
 
-A simple, mobile-first inventory website for a physical auto parts shop. Customers
+A simple, mobile-first inventory website for Osrob Motors. Customers
 browse what's in stock and reach the owner on WhatsApp to buy. The owner manages
 stock from a lightweight admin dashboard, no accounts required on either side.
 

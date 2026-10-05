@@ -19,27 +19,27 @@ const benefits = [
 const promotionSlides = [
   {
     eyebrow: "Featured offer",
-    title: "All motor oils only now",
+    title: "Shock absorber",
     highlight: "in stock",
     button: "Browse products",
-    image: "/banner.jpg",
-    imageAlt: "Motor oil product",
+    image: "/shockabsorber.png",
+    imageAlt: "Shock absorber product",
   },
   {
     eyebrow: "Featured offer",
-    title: "All auto parts",
-    highlight: "in stock",
+    title: "Wheel bearing",
+    highlight: "ready to ship",
     button: "Browse products",
-    image: "/bannerr.jpg",
-    imageAlt: "Motor oil product",
+    image: "/wheelbearing.png",
+    imageAlt: "Wheel bearing product",
   },
   {
     eyebrow: "Featured offer",
-    title: "All car tyres available",
+    title: "Oil filter",
     highlight: "up to -15%",
     button: "Browse products",
-    image: "/bannerrr.jpg",
-    imageAlt: "Motor oil product",
+    image: "/oilfilter.png",
+    imageAlt: "Oil filter product",
   },
 ];
 
@@ -59,9 +59,9 @@ export function CustomerBanner() {
   }
 
   return (
-    <section className="overflow-hidden rounded-2xl border border-[#d9e0e5] bg-white shadow-[0_5px_20px_rgba(43,55,66,0.08)]" aria-label="Find your car part">
+    <section className="overflow-hidden rounded-2xl border border-[#d9e0e5] bg-[#f4f6f7] shadow-[0_5px_20px_rgba(43,55,66,0.08)]" aria-label="Find your car part">
       <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
-        <div className="border-b border-[#e1e6ea] bg-[#fafbfc] p-5 sm:p-7 lg:border-b-0 lg:border-r">
+        <div className="border-b border-[#e1e6ea] bg-white p-5 sm:p-7 lg:border-b-0 lg:border-r">
           <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#d93636]">Parts finder</p>
           <h1 className="mt-1 font-display text-2xl font-extrabold leading-tight text-[#171b1d] sm:text-3xl">
             Search for parts by car
@@ -89,14 +89,14 @@ export function CustomerBanner() {
           </a>
         </div>
 
-        <div className="relative min-h-[315px] overflow-hidden bg-[#f4f6f7]">
+        <div className="relative min-h-[315px] overflow-hidden bg-transparent">
           <div
             className="flex h-full transition-transform duration-700 ease-out"
             style={{ transform: `translateX(-${activeSlide * 100}%)` }}
           >
             {promotionSlides.map((slide, index) => (
-              <div key={`${slide.title}-${index}`} className="relative min-w-full p-5 sm:p-7">
-                <div className="relative z-10 max-w-[58%]">
+              <div key={`${slide.title}-${index}`} className="relative min-w-full overflow-hidden p-5 sm:p-7">
+                <div className="relative z-10 max-w-[56%]">
                   <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#d93636]">{slide.eyebrow}</p>
                   <h2 className="mt-2 font-display text-3xl font-extrabold leading-[0.98] text-[#171b1d] sm:text-4xl">
                     {slide.title} <span className="text-[#d93636]">{slide.highlight}</span>
@@ -105,15 +105,23 @@ export function CustomerBanner() {
                     {slide.button}
                   </a>
                 </div>
-                <Image
-                  src={slide.image}
-                  alt={slide.imageAlt}
-                  width={240}
-                  height={240}
-                  priority={index === 0}
-                  className="absolute bottom-2 right-2 h-[82%] w-[52%] object-contain object-right-bottom sm:right-7"
-                />
-                <div className="absolute -right-16 -top-20 h-56 w-56 rounded-full border-[34px] border-white/70" aria-hidden />
+
+                <div className="absolute inset-y-0 right-[-10%] w-[72%]">
+                  <div
+                    className="absolute inset-0 scale-[1.9] bg-cover bg-center bg-no-repeat opacity-[0.3] blur-[12px]"
+                    style={{ backgroundImage: 'url("/back.png")' }}
+                    aria-hidden
+                  />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.12),transparent_60%)]" aria-hidden />
+                  <Image
+                    src={slide.image}
+                    alt={slide.imageAlt}
+                    width={640}
+                    height={640}
+                    priority={index === 0}
+                    className="absolute bottom-[-8%] right-[-4%] z-10 h-[125%] w-[78%] object-contain object-right-bottom drop-shadow-[0_18px_35px_rgba(10,18,25,0.32)]"
+                  />
+                </div>
               </div>
             ))}
           </div>

@@ -31,6 +31,7 @@ export default async function EditProductPage({
           categoryId: product.categoryId,
           price: (product.price / 100).toString(),
           stock: product.stock.toString(),
+          availability: product.stock > 0 ? "available" : "unavailable",
           image: product.image,
           partNumber: product.partNumber ?? "",
           vehicleMake: product.vehicleMake ?? "",

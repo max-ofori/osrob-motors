@@ -8,9 +8,10 @@ import type { CategoryOption } from "@/types";
 export type ProductFormValues = {
   id?: string;
   name: string;
-  categoryId: string;
-  price: string; // cedis, as typed by the owner e.g. "450"
+  categoryId?: string;
+  price: string;
   stock: string;
+  availability: "available" | "unavailable";
   image: string | null;
   partNumber: string;
   vehicleMake: string;
@@ -23,7 +24,8 @@ const emptyValues: ProductFormValues = {
   name: "",
   categoryId: "",
   price: "",
-  stock: "",
+  stock: "1",
+  availability: "available",
   image: null,
   partNumber: "",
   vehicleMake: "",
@@ -54,18 +56,24 @@ export function ProductForm({
     setError(null);
 
     if (!values.name.trim()) return setError("Please enter a product name.");
-    if (!values.categoryId) return setError("Please choose a category.");
     if (!values.price || Number.isNaN(Number(values.price))) {
       return setError("Please enter a valid price.");
     }
 
+    const categoryId = values.categoryId || categories[0]?.id || "";
+    if (!categoryId) return setError("No category is available. Please create one first.");
+
     setSubmitting(true);
+
+    const stockValue = values.availability === "available"
+      ? Math.max(1, Number(values.stock) || 1)
+      : 0;
 
     const payload = {
       name: values.name.trim(),
-      categoryId: values.categoryId,
+      categoryId,
       price: Number(values.price),
-      stock: values.stock ? Number(values.stock) : 0,
+      stock: stockValue,
       image: values.image,
       partNumber: values.partNumber.trim(),
       vehicleMake: values.vehicleMake.trim(),
@@ -115,30 +123,6 @@ export function ProductForm({
         />
       </div>
 
-      <div>
-        <label className={labelClass} htmlFor="category">
-          Category
-        </label>
-        <select
-          id="category"
-          className={inputClass}
-          value={values.categoryId}
-          onChange={(e) => update("categoryId", e.target.value)}
-        >
-          <option value="">Select a category</option>
-          {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-        {categories.length === 0 && (
-          <p className="mt-1.5 text-sm text-steel">
-            No categories yet — add one on the Categories page first.
-          </p>
-        )}
-      </div>
-
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label className={labelClass} htmlFor="price">
@@ -157,14 +141,31 @@ export function ProductForm({
           />
         </div>
         <div>
+          <label className={labelClass} htmlFor="availability">
+            Availability
+          </label>
+          <select
+            id="availability"
+            className={inputClass}
+            value={values.availability}
+            onChange={(e) => update("availability", e.target.value as "available" | "unavailable")}
+          >
+            <option value="available">Available</option>
+            <option value="unavailable">Unavailable</option>
+          </select>
+        </div>
+      </div>
+
+      {values.availability === "available" && (
+        <div>
           <label className={labelClass} htmlFor="stock">
-            Stock Quantity
+            Quantity in stock
           </label>
           <input
             id="stock"
             type="number"
             inputMode="numeric"
-            min={0}
+            min={1}
             step="1"
             className={inputClass}
             value={values.stock}
@@ -172,7 +173,7 @@ export function ProductForm({
             placeholder="10"
           />
         </div>
-      </div>
+      )}
 
       <ImageUploader value={values.image} onChange={(url) => update("image", url)} />
 

@@ -2,6 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { isAdminAuthenticated } from "@/lib/auth";
 
+async function getDefaultCategoryId() {
+  const category = await prisma.category.upsert({
+    where: { name: "General" },
+    update: {},
+    create: { name: "General" },
+  });
+
+  return category.id;
+}
+
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -19,7 +29,11 @@ export async function PATCH(
   const data: Record<string, unknown> = {};
 
   if (typeof body.name === "string" && body.name.trim()) data.name = body.name.trim();
-  if (typeof body.categoryId === "string" && body.categoryId) data.categoryId = body.categoryId;
+  if (typeof body.categoryId === "string" && body.categoryId) {
+    data.categoryId = body.categoryId;
+  } else {
+    data.categoryId = await getDefaultCategoryId();
+  }
   if (body.price !== undefined) {
     const priceCedis = Number(body.price);
     if (!Number.isFinite(priceCedis) || priceCedis < 0) {
