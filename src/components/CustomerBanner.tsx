@@ -19,6 +19,30 @@ const benefits = [
 const promotionSlides = [
   {
     eyebrow: "Featured offer",
+    title: "Brake parts",
+    highlight: "in stock",
+    button: "Browse products",
+    image: "/brake.png",
+    imageAlt: "Brake parts product",
+  },
+  {
+    eyebrow: "Featured offer",
+    title: "Brake kits",
+    highlight: "up to -15%",
+    button: "Browse products",
+    image: "/brak.png",
+    imageAlt: "Brake kit product",
+  },
+  {
+    eyebrow: "Featured offer",
+    title: "Car accessories",
+    highlight: "ready to ship",
+    button: "Browse products",
+    image: "/cart.png",
+    imageAlt: "Car accessory product",
+  },
+  {
+    eyebrow: "Featured offer",
     title: "Shock absorber",
     highlight: "in stock",
     button: "Browse products",
@@ -94,36 +118,46 @@ export function CustomerBanner() {
             className="flex h-full transition-transform duration-700 ease-out"
             style={{ transform: `translateX(-${activeSlide * 100}%)` }}
           >
-            {promotionSlides.map((slide, index) => (
-              <div key={`${slide.title}-${index}`} className="relative min-w-full overflow-hidden p-5 sm:p-7">
-                <div className="relative z-10 max-w-[56%]">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#d93636]">{slide.eyebrow}</p>
-                  <h2 className="mt-2 font-display text-3xl font-extrabold leading-[0.98] text-[#171b1d] sm:text-4xl">
-                    {slide.title} <span className="text-[#d93636]">{slide.highlight}</span>
-                  </h2>
-                  <a href="#products" className="mt-5 inline-flex rounded-md bg-[#d93636] px-4 py-2 text-xs font-bold text-white">
-                    {slide.button}
-                  </a>
-                </div>
+            {promotionSlides.map((slide, index) => {
+              const isOilFilter = slide.image === "/oilfilter.png";
+              const isCart = slide.image === "/cart.png";
 
-                <div className="absolute inset-y-0 right-[-10%] w-[72%]">
-                  <div
-                    className="absolute inset-0 scale-[1.9] bg-cover bg-center bg-no-repeat opacity-[0.3] blur-[12px]"
-                    style={{ backgroundImage: 'url("/back.png")' }}
-                    aria-hidden
-                  />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.12),transparent_60%)]" aria-hidden />
-                  <Image
-                    src={slide.image}
-                    alt={slide.imageAlt}
-                    width={640}
-                    height={640}
-                    priority={index === 0}
-                    className="absolute bottom-[-8%] right-[-4%] z-10 h-[125%] w-[78%] object-contain object-right-bottom drop-shadow-[0_18px_35px_rgba(10,18,25,0.32)]"
-                  />
+              return (
+                <div key={`${slide.title}-${index}`} className="relative min-w-full overflow-hidden p-5 sm:p-7">
+                  <div className="relative z-10 max-w-[52%]">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#d93636]">{slide.eyebrow}</p>
+                    <h2 className="mt-2 font-display text-3xl font-extrabold leading-[0.98] text-[#171b1d] sm:text-4xl">
+                      {slide.title} <span className="text-[#d93636]">{slide.highlight}</span>
+                    </h2>
+                    <a href="#products" className="mt-5 inline-flex rounded-md bg-[#d93636] px-4 py-2 text-xs font-bold text-white">
+                      {slide.button}
+                    </a>
+                  </div>
+
+                  <div className="absolute inset-y-0 right-[-14%] w-[80%]">
+                    <div
+                      className="absolute inset-0 scale-[2.1] bg-cover bg-center bg-no-repeat opacity-[0.32] blur-[12px]"
+                      style={{ backgroundImage: 'url("/back.png")' }}
+                      aria-hidden
+                    />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.12),transparent_62%)]" aria-hidden />
+                    <Image
+                      src={slide.image}
+                      alt={slide.imageAlt}
+                      width={700}
+                      height={700}
+                      priority={index === 0}
+                      className={[
+                        "absolute z-10 object-contain object-right-bottom drop-shadow-[0_18px_35px_rgba(10,18,25,0.32)]",
+                        isOilFilter ? "bottom-[-2%] right-[0%] h-[150%] w-[88%]" : "",
+                        isCart ? "bottom-[-8%] right-[8%] h-[120%] w-[74%]" : "",
+                        !isOilFilter && !isCart ? "bottom-[-10%] right-[4%] h-[132%] w-[82%]" : "",
+                      ].join(" ")}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <div className="absolute bottom-4 left-5 z-10 flex gap-2 sm:left-7">
             <button type="button" onClick={() => moveSlide(-1)} aria-label="Previous promotion" className="flex h-7 w-7 items-center justify-center rounded-full border border-[#d4dce1] bg-white text-[#687773]">‹</button>
