@@ -88,10 +88,10 @@ export function CustomerBanner() {
         <div className="border-b border-[#e1e6ea] bg-white p-5 sm:p-7 lg:border-b-0 lg:border-r">
           <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#d93636]">Parts finder</p>
           <h1 className="mt-1 font-display text-2xl font-extrabold leading-tight text-[#171b1d] sm:text-3xl">
-            Search for parts by car
+            Find your auto parts here.
           </h1>
           <p className="mt-2 max-w-sm text-xs leading-5 text-[#687773]">
-            Find the right replacement parts for your vehicle in a few quick steps.
+            We deal in trucks and heavy duty machine parts.
           </p>
 
           <div className="mt-5 grid gap-2">
