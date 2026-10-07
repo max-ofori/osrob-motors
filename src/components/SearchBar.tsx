@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 
-export function SearchBar({ placeholder = "Search for a part, e.g. Corolla brake pad" }: { placeholder?: string }) {
+export function SearchBar({ placeholder = "search for parts" }: { placeholder?: string }) {
   const searchParams = useSearchParams();
   const currentQuery = searchParams.get("q") ?? "";
 

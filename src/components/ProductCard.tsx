@@ -46,7 +46,7 @@ export function ProductCard({ product }: { product: ProductWithCategory }) {
             </div>
 
             <div className="rounded-full border border-[#f0c4c4] bg-[#fff2f2] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#d93636]">
-              {product.stock > 0 ? "In stock" : "Sold out"}
+              {product.stock > 0 ? `${product.stock} in stock` : "Sold out"}
             </div>
           </div>
         </div>

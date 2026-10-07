@@ -4,16 +4,16 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const searchSteps = [
-  { number: "01", label: "Model" },
-  { number: "02", label: "Year of manufacture" },
-  { number: "03", label: "Make of the car" },
-  { number: "04", label: "Engine" },
+  { number: "01", label: "QUALITY PARTS" },
+  { number: "02", label: "BEST VALUE" },
+  { number: "03", label: "AFFORDABLE PARTS" },
+  { number: "04", label: "SHOP WITH CONFIDENCE!" },
 ];
 
 const benefits = [
-  { icon: "shield", title: "Over 50,000", detail: "replacement parts" },
-  { icon: "truck", title: "Free shipping", detail: "on qualifying orders" },
-  { icon: "clock", title: "30-day", detail: "return policy" },
+  { icon: "shield", title: "Over 100", detail: "replacement parts" },
+  { icon: "truck", title: "Fast Delivery", detail: "on qualifying orders" },
+  { icon: "clock", title: "quaranteed", detail: "return policy" },
 ] as const;
 
 const promotionSlides = [
@@ -35,10 +35,10 @@ const promotionSlides = [
   },
   {
     eyebrow: "Featured offer",
-    title: "Car accessories",
-    highlight: "ready to ship",
+    title: "Car parts",
+    highlight: "available",
     button: "Browse products",
-    image: "/cart.png",
+    image: "/spareparts.png",
     imageAlt: "Car accessory product",
   },
   {
@@ -52,7 +52,7 @@ const promotionSlides = [
   {
     eyebrow: "Featured offer",
     title: "Wheel bearing",
-    highlight: "ready to ship",
+    highlight: "in stock",
     button: "Browse products",
     image: "/wheelbearing.png",
     imageAlt: "Wheel bearing product",
@@ -60,7 +60,7 @@ const promotionSlides = [
   {
     eyebrow: "Featured offer",
     title: "Oil filter",
-    highlight: "up to -15%",
+    highlight: "in stock",
     button: "Browse products",
     image: "/oilfilter.png",
     imageAlt: "Oil filter product",

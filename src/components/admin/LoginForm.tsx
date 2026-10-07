@@ -40,7 +40,7 @@ export function LoginForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
         <label htmlFor="code" className="mb-1.5 block text-sm font-medium text-ink">
-          Secret Code
+          Access Code
         </label>
         <input
           id="code"
@@ -50,7 +50,7 @@ export function LoginForm() {
           value={code}
           onChange={(e) => setCode(e.target.value)}
           className="w-full rounded-md border border-line bg-canvas-raised px-4 py-3.5 text-lg tracking-widest text-ink focus:outline-none focus:ring-2 focus:ring-amber"
-          placeholder="••••••"
+          placeholder="••••"
         />
       </div>
 

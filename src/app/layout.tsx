@@ -10,11 +10,21 @@ import { LocalBusinessJsonLd } from "@/components/LocalBusinessJsonLd";
 
 const SHOP_NAME = process.env.NEXT_PUBLIC_SHOP_NAME ?? "Osrob Motors";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const HOME_TITLE = `Auto Parts & Car Parts in Accra | ${SHOP_NAME}`;
+const HOME_DESCRIPTION = `Shop auto parts and car parts in Accra, Ghana. Browse available replacement parts at ${SHOP_NAME} on Spintex Road and contact us on WhatsApp.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: `${SHOP_NAME} | Auto Parts Available Now`,
-  description: `Browse the parts currently in stock at ${SHOP_NAME} and contact us on WhatsApp to buy.`,
+  title: HOME_TITLE,
+  description: HOME_DESCRIPTION,
+  keywords: [
+    "auto parts Accra",
+    "car parts Accra",
+    "auto spare parts Ghana",
+    "replacement car parts",
+    "Osrob Motors",
+    "Spintex Road",
+  ],
   applicationName: SHOP_NAME,
   icons: {
     icon: "/osrob-motors.jpg",
@@ -24,8 +34,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: SHOP_NAME,
-    title: `${SHOP_NAME} | Auto Parts Available Now`,
-    description: `Browse the parts currently in stock at ${SHOP_NAME} and contact us on WhatsApp to buy.`,
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
   },
 };
 
